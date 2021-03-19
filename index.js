@@ -58,8 +58,13 @@ function todos  (state = [], action ) => {
     
   }
 
-  
-  const store = createStore();
+  function app (state  = {}, action){
+    return{
+      todos: todos(state.todos, action)
+      todos: goals(state.goals, action)
+    }
+  }
+  const store = createStore(app);
   store.subscribe(() => {
     console.log("The new state is", store.getState());
 });
